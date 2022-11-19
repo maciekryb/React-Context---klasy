@@ -12,14 +12,9 @@ class App extends PureComponent {
   render() {
     return (
       <div>
-        <AppContext.Provider
-          value={{
-            isUserLogged: this.state.isUserLogged,
-            toggleLoggedState: this.handleToggleStateIsLogged,
-          }}>
-          <UserInfo />
-          <Button />
-        </AppContext.Provider>
+        <UserInfo />
+        <Button />
+
         <AppContext.Provider
           value={{
             isUserLogged: this.state.isUserAdult,
