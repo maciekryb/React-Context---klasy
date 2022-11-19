@@ -6,6 +6,7 @@ import { AppContext, defaultObject } from "./AppContext";
 class App extends PureComponent {
   state = {
     isUserLogged: defaultObject.isUserLogged,
+    isUserAdult: true,
   };
 
   render() {
@@ -19,6 +20,14 @@ class App extends PureComponent {
           <UserInfo />
           <Button />
         </AppContext.Provider>
+        <AppContext.Provider
+          value={{
+            isUserLogged: this.state.isUserAdult,
+            toggleLoggedState: this.handleToggleStateIsAdult,
+          }}>
+          <UserInfo />
+          <Button />
+        </AppContext.Provider>
       </div>
     );
   }
@@ -26,6 +35,11 @@ class App extends PureComponent {
   handleToggleStateIsLogged = () =>
     this.setState((prevState) => ({
       isUserLogged: !prevState.isUserLogged,
+    }));
+
+  handleToggleStateIsAdult = () =>
+    this.setState((prevState) => ({
+      isUserAdult: !prevState.isUserAdult,
     }));
 }
 
